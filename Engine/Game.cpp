@@ -28,8 +28,8 @@ Game::~Game()
 
 void Game::onInit()
 {
-	guy->onLoad("character.png");
-	map->onCreate("New Map", "tiles.png", 20, 15);
+	guy->onLoad("../Resources/character.png");
+	map->onCreate("New Map", "../Resources/tiles.png", 20, 15);
 }
 
 void Game::onUpdate()
@@ -66,7 +66,7 @@ void Game::onKeyDown()
 		Log::info("Engine shutting down...");
 
 		guy->onCleanup();
-		Graphics::removeTexture("tiles.png");
+		Graphics::removeTexture("../Resources/tiles.png");
 
 		Log::info("Engine terminated");
 
@@ -83,9 +83,9 @@ void Game::onKeyDown()
 		map->setTile(x, y, (MapTile){{2, 0, 0}, false});
 	}
 	if (Keyboard::isDown('s'))
-		map->onSave("test.map");
+		map->onSave("../Resources/test.map");
 	if (Keyboard::isDown('l'))
-		map->onLoad("test.map");
+		map->onLoad("../Resources/test.map");
 }
 
 void Game::onKeyUp()
