@@ -24,10 +24,10 @@ GLvoid onKeyUp(unsigned char key, int x, int y);
 GLvoid onSpecialKeyDown(int key, int x, int y);
 GLvoid onSpecialKeyUp(int key, int x, int y);
 
+GLvoid onMouse(int button, int state, int x, int y);
+
 GLvoid resizeGL(int w, int h);
-
 GLvoid onUpdate(int value);
-
 GLvoid drawGL();
 
 Game *theGame;
@@ -45,12 +45,6 @@ int main(int argc, char *argv[])
 
 	// enable texture 2d
 	glEnable(GL_TEXTURE_2D);
-
-	glEnable(GL_LIGHTING);
-	glEnable(GL_LIGHT0);
-
-	GLfloat lightpos[] = {0, 0, 1, 0};
-	glLightfv(GL_LIGHT0, GL_POSITION, lightpos);
 
 	// enable transparency
 	glEnable(GL_BLEND);
@@ -76,6 +70,8 @@ int main(int argc, char *argv[])
 	// other special keys
 	glutSpecialFunc(&onSpecialKeyDown);
 	glutSpecialUpFunc(&onSpecialKeyUp);
+	// mouse events
+	glutMouseFunc(&onMouse);
 
 	// call the main loop
 	glutMainLoop();
@@ -142,4 +138,9 @@ GLvoid onSpecialKeyUp(int key, int x, int y)
 {
 	Keyboard::setKey(key, false);
 	theGame->onKeyUp();
+}
+
+GLvoid onMouse(int button, int state, int x, int y)
+{
+	theGame->onMouse(button, state, x, y);
 }

@@ -134,7 +134,7 @@ void Entity::onUpdate()
 void Entity::onDraw()
 {
 	sprite->bindTexture();
-	Graphics::drawSprite(sprite, (Rectangle){position.x, position.y, 16, 32}, animation->getFrame(), 0);
+	Graphics::drawSprite(sprite, (Rectangle){position.x, position.y, 16, 32}, animation->getFrame());
 }
 
 void Entity::onCleanup()

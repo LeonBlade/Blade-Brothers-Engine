@@ -55,8 +55,16 @@ void Game::onUpdate()
 void Game::onDraw()
 {
 	map->onDraw(LayerGround);
+	map->onDraw(LayerMiddle);
 
 	guy->onDraw();
+
+	map->onDraw(LayerAbove);
+}
+
+void Game::onMouse(int button, int state, int x, int y)
+{
+
 }
 
 void Game::onKeyDown()
@@ -73,19 +81,6 @@ void Game::onKeyDown()
 		glutDestroyWindow(glWindow);
 		exit(0);
 	}
-
-	if (Keyboard::isDown('c'))
-	{
-		int x = (guy->getX() - (int)guy->getX() % 16) / 16;
-		int y = (guy->getY() - (int)guy->getY() % 16) / 16;
-
-		Log::info("Changing tile in current location... %i %i", x, y);
-		map->setTile(x, y, (MapTile){{2, 0, 0}, false});
-	}
-	if (Keyboard::isDown('s'))
-		map->onSave("../Resources/test.map");
-	if (Keyboard::isDown('l'))
-		map->onLoad("../Resources/test.map");
 }
 
 void Game::onKeyUp()

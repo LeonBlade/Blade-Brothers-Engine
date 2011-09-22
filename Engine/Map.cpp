@@ -101,10 +101,18 @@ void Map::setTile(int x, int y, MapTile tile)
 {
 	tiles[x+(header.width*y)] = tile;
 }
+void Map::setTile(int x, int y, int tid, MapLayer layer)
+{
+	tiles[x+(header.width*y)].layer[layer] = tid;
+}
 
 MapTile Map::getTile(int x, int y)
 {
 	return tiles[x+(header.width*y)];
+}
+int Map::getTile(int x, int y, MapLayer layer)
+{
+	return tiles[x+(header.width*y)].layer[layer];
 }
 
 void Map::onDraw(MapLayer layer)
@@ -120,7 +128,7 @@ void Map::onDraw(MapLayer layer)
 			int tsw = sprite->getWidth() / 16;
 			tx = (tid % tsw) * 16;
 			ty = ((((tsw - (tid % tsw)) + tid) / tsw) - 1) * 16;
-			Graphics::drawSprite(sprite, (Rectangle){x*16,y*16,16,16}, (Rectangle){tx,ty,16,16}, 0);
+			Graphics::drawSprite(sprite, (Rectangle){x*16,y*16,16,16}, (Rectangle){tx,ty,16,16});
 		}
 	}
 }

@@ -32,8 +32,7 @@ public:
 	static Sprite *getTexture(std::string file);
 	static void removeTexture(std::string file);
 
-	static void drawSprite(Sprite *sprite, Rectangle to, Rectangle from, float rotate);
-	static void drawFancyQuad(GLfloat color[4][4], int x, int y, int w, int h, float rotate);
+	static void drawSprite(Sprite *sprite, Rectangle to, Rectangle from);
 
 private:
 	std::map<std::string, Sprite*> textures;

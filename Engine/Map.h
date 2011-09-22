@@ -58,7 +58,9 @@ public:
 	void onDraw(MapLayer layer);
 
 	void setTile(int x, int y, MapTile tile);
+	void setTile(int x, int y, int tid, MapLayer layer);
 	MapTile getTile(int x, int y);
+	int getTile(int x, int y, MapLayer layer);
 
 private:
 	MapHeader header;

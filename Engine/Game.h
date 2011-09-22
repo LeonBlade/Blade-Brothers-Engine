@@ -32,6 +32,8 @@ public:
 	void onKeyDown();
 	void onKeyUp();
 
+	void onMouse(int button, int state, int x, int y);
+
 private:
 	GameState *currentState;
 	int glWindow;

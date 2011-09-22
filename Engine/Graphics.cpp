@@ -69,7 +69,7 @@ void Graphics::removeTexture(std::string file)
 	Graphics::instance->textures.erase(it);
 }
 
-void Graphics::drawSprite(Sprite *sprite, Rectangle to, Rectangle from, float rotate)
+void Graphics::drawSprite(Sprite *sprite, Rectangle to, Rectangle from)
 {
 	// push the matrix so we can mess with our own
 	glPushMatrix();
@@ -85,7 +85,8 @@ void Graphics::drawSprite(Sprite *sprite, Rectangle to, Rectangle from, float ro
 		float max_x = (float) (from.x + from.w) / sprite->getWidth();
 		float min_y = (float) (from.y + from.h) / sprite->getHeight();
 
-		glNormal3d(0, 0, 1);
+		glNormal3d(0, 0, 0);
+
 		glTexCoord2f(min_x, max_y);
 		glVertex2f(-to.w/2, -to.h/2);
 
@@ -105,55 +106,4 @@ void Graphics::drawSprite(Sprite *sprite, Rectangle to, Rectangle from, float ro
 
 	// restore the last matrix
 	glPopMatrix();
-}
-
-void Graphics::drawFancyQuad(GLfloat color[4][4], int x, int y, int w, int h, float rotate)
-{
-	// store last color in a float array
-	float last_color[4];
-	glGetFloatv(GL_CURRENT_COLOR, last_color);
-
-	// push the matrix so we can mess with our own
-	glPushMatrix();
-	glLoadIdentity();
-
-	// translate this object to it's X and Y position
-	glTranslated(x, y, 0);
-
-	// rotate the matrix
-	glRotatef(rotate, 0.0, 0.0, 1.0);
-
-	// time to draw
-	glBegin(GL_QUADS);
-	{
-		// vertex 0 (top left)
-		glColor4fv(color[0]);
-		glTexCoord2f(0, 0);
-		glVertex2i(-w/2, -h/2);
-
-		// vertex 1 (top right)
-		glColor4fv(color[1]);
-		glTexCoord2f(1, 0);
-		glVertex2i(w/2, -h/2);
-
-		// vertex 2 (bottom right)
-		glColor4fv(color[2]);
-		glTexCoord2f(1, 1);
-		glVertex2i(w/2, h/2);
-
-		// vertex 3 (bottom left
-		glColor4fv(color[3]);
-		glTexCoord2f(0, 1);
-		glVertex2i(-w/2, h/2);
-	}
-	glEnd();
-
-	// translate our matrix back
-	glTranslated(-x, -y, 0);
-
-	// restore the last matrix
-	glPopMatrix();
-
-	// reset our color
-	glColor4fv(last_color);
 }
