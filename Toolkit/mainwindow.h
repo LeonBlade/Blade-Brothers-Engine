@@ -16,6 +16,14 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+public slots:
+    void addTab_Slot();
+    void removeTab_Slot(int id);
+
+public:
+    void addTab();
+    void removeTab(int id);
+
 private:
     Ui::MainWindow *ui;
     GLWidget *myWidget;

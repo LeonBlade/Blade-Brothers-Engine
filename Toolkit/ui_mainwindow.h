@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Fri Sep 23 13:47:23 2011
+** Created: Fri Sep 23 16:23:27 2011
 **      by: Qt User Interface Compiler version 4.7.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -38,8 +38,6 @@ public:
     QHBoxLayout *horizontalLayout;
     QWidget *widget;
     QTabWidget *tabWidget;
-    QWidget *tab;
-    QWidget *tab_2;
     QMenuBar *menuBar;
     QMenu *menuFile;
     QMenu *menuEdit;
@@ -86,12 +84,6 @@ public:
         tabWidget->setDocumentMode(true);
         tabWidget->setTabsClosable(true);
         tabWidget->setMovable(true);
-        tab = new QWidget();
-        tab->setObjectName(QString::fromUtf8("tab"));
-        tabWidget->addTab(tab, QString());
-        tab_2 = new QWidget();
-        tab_2->setObjectName(QString::fromUtf8("tab_2"));
-        tabWidget->addTab(tab_2, QString());
 
         horizontalLayout->addWidget(tabWidget);
 
@@ -124,7 +116,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(-1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -134,12 +126,11 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Toolkit", 0, QApplication::UnicodeUTF8));
         actionNew_Map->setText(QApplication::translate("MainWindow", "New Map", 0, QApplication::UnicodeUTF8));
+        actionNew_Map->setShortcut(QApplication::translate("MainWindow", "Ctrl+N", 0, QApplication::UnicodeUTF8));
         actionOpen_Map->setText(QApplication::translate("MainWindow", "Open Map", 0, QApplication::UnicodeUTF8));
         actionSave_Map->setText(QApplication::translate("MainWindow", "Save Map", 0, QApplication::UnicodeUTF8));
         actionSave_Map_As->setText(QApplication::translate("MainWindow", "Save Map As...", 0, QApplication::UnicodeUTF8));
         actionClose_Map->setText(QApplication::translate("MainWindow", "Close Map", 0, QApplication::UnicodeUTF8));
-        tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("MainWindow", "Tab 1", 0, QApplication::UnicodeUTF8));
-        tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("MainWindow", "Tab 2", 0, QApplication::UnicodeUTF8));
         menuFile->setTitle(QApplication::translate("MainWindow", "File", 0, QApplication::UnicodeUTF8));
         menuEdit->setTitle(QApplication::translate("MainWindow", "Edit", 0, QApplication::UnicodeUTF8));
     } // retranslateUi

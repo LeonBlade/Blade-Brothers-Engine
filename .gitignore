@@ -6,3 +6,4 @@
 *.DS_Store
 *.obj
 */Toolkit-build-desktop
+*.app
