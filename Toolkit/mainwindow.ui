@@ -45,6 +45,12 @@
     </item>
     <item>
      <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <property name="usesScrollButtons">
+       <bool>true</bool>
+      </property>
       <property name="documentMode">
        <bool>true</bool>
       </property>
@@ -77,6 +83,26 @@
      <height>22</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionNew_Map"/>
+    <addaction name="separator"/>
+    <addaction name="actionOpen_Map"/>
+    <addaction name="separator"/>
+    <addaction name="actionSave_Map"/>
+    <addaction name="actionSave_Map_As"/>
+    <addaction name="separator"/>
+    <addaction name="actionClose_Map"/>
+   </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuEdit"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -87,6 +113,31 @@
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionNew_Map">
+   <property name="text">
+    <string>New Map</string>
+   </property>
+  </action>
+  <action name="actionOpen_Map">
+   <property name="text">
+    <string>Open Map</string>
+   </property>
+  </action>
+  <action name="actionSave_Map">
+   <property name="text">
+    <string>Save Map</string>
+   </property>
+  </action>
+  <action name="actionSave_Map_As">
+   <property name="text">
+    <string>Save Map As...</string>
+   </property>
+  </action>
+  <action name="actionClose_Map">
+   <property name="text">
+    <string>Close Map</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>

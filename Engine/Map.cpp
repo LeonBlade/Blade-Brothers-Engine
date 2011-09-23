@@ -65,6 +65,8 @@ void Map::onLoad(std::string file)
 	fread(&header.magic, 1, 4, f);
 	char cc;
 	int i = 0;
+	header.name = (char*)malloc(24);
+	header.tileset = (char*)malloc(64);
 	while ((cc = (char)fgetc(f)) != 0x00)
 	{
 		header.name[i] = cc; i++;

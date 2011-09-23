@@ -28,7 +28,7 @@
 									<listOptionValue builtIn="false" value="gl"/>
 									<listOptionValue builtIn="false" value="glu"/>
 									<listOptionValue builtIn="false" value="glut"/>
-									<listOptionValue builtIn="false" value="glpng"/>
+									<listOptionValue builtIn="false" value="png"/>
 								</option>
 								<option id="macosx.cpp.link.option.paths.924748179" name="Library search path (-L)" superClass="macosx.cpp.link.option.paths" valueType="libPaths">
 									<listOptionValue builtIn="false" value="/opt/local/lib"/>

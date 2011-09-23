@@ -3,16 +3,23 @@
 
 #include <QGLWidget>
 
+#include "Map.h"
+
 class GLWidget : public QGLWidget
 {
     Q_OBJECT
 public:
-    explicit GLWidget(QObject *parent = 0);
+    explicit GLWidget(QWidget *parent = 0, QGLWidget *shareWidget = 0);
 
-signals:
+protected:
+    void initializeGL();
+    void resizeGL(int w, int h);
+    void paintGL();
 
-public slots:
+    void keyPressEvent(QKeyEvent *e);
 
+private:
+    Map *map;
 };
 
 #endif // GLWIDGET_H
