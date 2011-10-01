@@ -41,7 +41,7 @@ void FPS::onUpdate()
 	FPS::instance->frameCount++;
 
 	// calculate speed factor
-	FPS::instance->speedFactor = (glutGet(GLUT_ELAPSED_TIME) - FPS::instance->currentTime) / 100;
+	FPS::instance->speedFactor = glutGet(GLUT_ELAPSED_TIME) - FPS::instance->currentTime;
 
 	// get the number of milliseconds since glutInit called
 	// (or first call to glutGet(GLUT ELAPSED TIME)).

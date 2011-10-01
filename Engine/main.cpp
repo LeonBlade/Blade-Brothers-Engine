@@ -11,7 +11,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#include <GL/gl.h>
 #include <GL/glut.h>
 
 #include "Game.h"
@@ -96,16 +95,16 @@ GLvoid resizeGL(int width, int height)
 
 GLvoid onUpdate(int value)
 {
+	FPS::onUpdate();
+	theGame->onUpdate();
 
+	glutTimerFunc(2, &onUpdate, 1);
 }
 
 GLvoid drawGL()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
-
-	FPS::onUpdate();
-	theGame->onUpdate();
 
 	theGame->onDraw();
 

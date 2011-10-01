@@ -62,6 +62,9 @@ public:
 	MapTile getTile(int x, int y);
 	int getTile(int x, int y, MapLayer layer);
 
+	int getWidth();
+	int getHeight();
+
 private:
 	MapHeader header;
 	MapTile *tiles;

@@ -12,7 +12,6 @@
 #include <map>
 
 #include <GL/glut.h>
-#include <GL/glpng.h>
 
 struct Rectangle
 {
@@ -31,6 +30,8 @@ public:
 	static bool hasTexture(std::string file);
 	static Sprite *getTexture(std::string file);
 	static void removeTexture(std::string file);
+
+	static void removeAllTextures();
 
 	static void drawSprite(Sprite *sprite, Rectangle to, Rectangle from);
 

@@ -10,6 +10,7 @@ class GLWidget : public QGLWidget
     Q_OBJECT
 public:
     explicit GLWidget(QWidget *parent = 0, QGLWidget *shareWidget = 0);
+	~GLWidget();
 
 protected:
     void initializeGL();
@@ -17,9 +18,6 @@ protected:
     void paintGL();
 
     void keyPressEvent(QKeyEvent *e);
-
-private:
-    Map *map;
 };
 
 #endif // GLWIDGET_H

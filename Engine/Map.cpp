@@ -40,7 +40,7 @@ void Map::onCreate(std::string name, std::string tileset, int width, int height)
 	header.width = width;
 	header.height = height;
 
-	sprite = Graphics::getTexture(tileset);
+	sprite = Graphics::addTexture(tileset);
 
 	tiles = (MapTile*) malloc(width*height*sizeof(MapTile));
 
@@ -115,6 +115,16 @@ MapTile Map::getTile(int x, int y)
 int Map::getTile(int x, int y, MapLayer layer)
 {
 	return tiles[x+(header.width*y)].layer[layer];
+}
+
+int Map::getWidth()
+{
+	return header.width;
+}
+
+int Map::getHeight()
+{
+	return header.height;
 }
 
 void Map::onDraw(MapLayer layer)

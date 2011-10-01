@@ -17,6 +17,7 @@
 class Sprite
 {
 public:
+	Sprite();
 	Sprite(std::string file, bool pixels = true);
 	virtual ~Sprite();
 

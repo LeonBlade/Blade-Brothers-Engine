@@ -8,9 +8,15 @@ GLWidget::GLWidget(QWidget *parent, QGLWidget *shareWidget) :
 {
 }
 
+GLWidget::~GLWidget()
+{
+	// make sure to remove all our textures before quitting !
+	Graphics::removeAllTextures();
+}
+
 void GLWidget::initializeGL()
 {
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
     glEnable(GL_TEXTURE_2D);
 
@@ -26,7 +32,7 @@ void GLWidget::resizeGL(int w, int h)
     glViewport(0, 0, w, h);
     glOrtho(0.0f, w, h, 0.0f, -1.0f, 1.0f);
 
-    resize(w, h);
+	resize(w, h);
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
@@ -35,11 +41,9 @@ void GLWidget::resizeGL(int w, int h)
 void GLWidget::paintGL()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-
 }
 
 void GLWidget::keyPressEvent(QKeyEvent *e)
 {
-
+	e = NULL;
 }

@@ -30,9 +30,7 @@
 									<listOptionValue builtIn="false" value="glut"/>
 									<listOptionValue builtIn="false" value="png"/>
 								</option>
-								<option id="macosx.cpp.link.option.paths.924748179" name="Library search path (-L)" superClass="macosx.cpp.link.option.paths" valueType="libPaths">
-									<listOptionValue builtIn="false" value="/opt/local/lib"/>
-								</option>
+								<option id="macosx.cpp.link.option.paths.924748179" name="Library search path (-L)" superClass="macosx.cpp.link.option.paths" valueType="libPaths"/>
 								<option id="macosx.cpp.link.option.userobjs.775236838" name="Other objects" superClass="macosx.cpp.link.option.userobjs"/>
 								<option id="macosx.cpp.link.option.other.1236217779" name="Other options (-Xlinker [option])" superClass="macosx.cpp.link.option.other"/>
 								<inputType id="cdt.managedbuild.tool.macosx.cpp.linker.input.1162104054" superClass="cdt.managedbuild.tool.macosx.cpp.linker.input">

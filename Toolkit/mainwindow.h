@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include "glwidget.h"
+#include "mapwidget.h"
+#include "tilesetwindow.h"
 
 namespace Ui {
     class MainWindow;
@@ -19,6 +21,7 @@ public:
 public slots:
     void addTab_Slot();
     void removeTab_Slot(int id);
+	void mapUpdate_Slot(int id);
 
 public:
     void addTab();
@@ -26,8 +29,8 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    GLWidget *myWidget;
-    GLWidget *tsWidget;
+	GLWidget *masterWidget;
+	TilesetWindow *tilesetWindow;
 };
 
 #endif // MAINWINDOW_H

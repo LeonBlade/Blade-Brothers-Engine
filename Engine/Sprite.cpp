@@ -8,24 +8,21 @@
 #include "Sprite.h"
 #include "Log.h"
 
+Sprite::Sprite()
+{
+	// initialize a few things
+	texture = -1;
+	width = -1;
+	height = -1;
+}
+
 Sprite::Sprite(std::string file, bool pixels)
 {
-	/*
-	 pngInfo info;
-	 if (pixels)
-	 texture = pngBind(file.c_str(), PNG_NOMIPMAP, PNG_ALPHA, &info, GL_CLAMP, GL_NEAREST, GL_NEAREST);
-	 else
-	 texture = pngBind(file.c_str(), PNG_NOMIPMAP, PNG_ALPHA, &info, GL_CLAMP, GL_LINEAR, GL_LINEAR);
+	// initialize a few things
+	texture = -1;
+	width = -1;
+	height = -1;
 
-	 if (texture != 0)
-	 {
-	 width = info.Width;
-	 height = info.Height;
-	 Log::info("Texture '%s' loaded successfully Width: %i - Height: %i", file.c_str(), width, height);
-	 }
-	 else
-	 Log::error("Texture '%s' failed to load", file.c_str());
-	 */
 	//header for testing if it is a png
 	png_byte header[8];
 

@@ -22,6 +22,11 @@ Graphics::~Graphics()
 	textures.clear();
 }
 
+void Graphics::removeAllTextures()
+{
+	Graphics::instance->textures.clear();
+}
+
 Sprite *Graphics::addTexture(std::string file, bool pixels)
 {
 	Log::info("Adding texture '%s'", file.c_str());
@@ -56,7 +61,7 @@ Sprite *Graphics::getTexture(std::string file)
 	}
 	else
 	{
-		return Graphics::addTexture(file);
+		return NULL;
 	}
 }
 

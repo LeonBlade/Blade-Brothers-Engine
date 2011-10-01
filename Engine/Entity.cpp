@@ -127,8 +127,8 @@ void Entity::onUpdate()
 {
 	animation->onUpdate();
 
-	position.x += velocity.x;
-	position.y += velocity.y;
+	position.x += (velocity.x / 4);
+	position.y += (velocity.y / 4);
 }
 
 void Entity::onDraw()

@@ -14,15 +14,29 @@ INCLUDEPATH += ../Engine/ \
 SOURCES += main.cpp\
         mainwindow.cpp \
     glwidget.cpp \
-    tilesetwindow.cpp
+    tilesetwindow.cpp \
+    mapwidget.cpp \
+    propertieswindow.cpp
 
 HEADERS  += mainwindow.h \
     glwidget.h \
-    tilesetwindow.h
+    tilesetwindow.h \
+    mapwidget.h \
+    propertieswindow.h
 
-LIBS += -L../Engine/Debug -lMap.o -lSprite.o -lGraphics.o -lLog.o -L/opt/local/lib -lpng
+LIBS += -L../Engine/Debug -lMap.o -lSprite.o -lGraphics.o -lLog.o -lpng
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    propertieswindow.ui
+
+
+
+
+
+
+
+
+
 
 
 
