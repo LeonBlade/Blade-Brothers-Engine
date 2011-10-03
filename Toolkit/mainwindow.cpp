@@ -6,14 +6,14 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    ui->setupUi(this);
+	ui->setupUi(this);
 
-    masterWidget = new GLWidget(0);
+	masterWidget = new GLWidget(0);
 
 	tilesetWindow = new TilesetWindow(ui->widget, masterWidget);
 
-    connect(ui->actionNew_Map, SIGNAL(triggered()), this, SLOT(addTab_Slot()));
-    connect(ui->tabWidget, SIGNAL(tabCloseRequested(int)), this, SLOT(removeTab_Slot(int)));
+	connect(ui->actionNew_Map, SIGNAL(triggered()), this, SLOT(addTab_Slot()));
+	connect(ui->tabWidget, SIGNAL(tabCloseRequested(int)), this, SLOT(removeTab_Slot(int)));
 	connect(ui->tabWidget, SIGNAL(currentChanged(int)), this, SLOT(mapUpdate_Slot(int)));
 
 	// add one map by default
@@ -23,6 +23,8 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+
+	Graphics::removeAllTextures();
 }
 
 /**

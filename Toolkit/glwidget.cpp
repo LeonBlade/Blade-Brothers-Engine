@@ -11,7 +11,7 @@ GLWidget::GLWidget(QWidget *parent, QGLWidget *shareWidget) :
 GLWidget::~GLWidget()
 {
 	// make sure to remove all our textures before quitting !
-	Graphics::removeAllTextures();
+
 }
 
 void GLWidget::initializeGL()

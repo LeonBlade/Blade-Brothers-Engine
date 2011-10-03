@@ -34,6 +34,9 @@ public:
 
 	Map *getMap();
 
+public slots:
+	void clickedSomething();
+
 private:
 	PropertiesWindow *propertiesWindow;
 	Map *map;

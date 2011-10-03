@@ -1,6 +1,7 @@
 #include <QMouseEvent>
 
 #include "mapwidget.h"
+#include "mainwindow.h"
 
 MapWidget::MapWidget(QWidget *parent, QGLWidget *shareWidget) :
 	GLWidget(parent, shareWidget)
@@ -52,17 +53,36 @@ void MapWidget::paintGL()
 	map->onDraw(LayerAbove);
 
 	// draw the cursor!
-	glBindTexture(GL_TEXTURE_2D, NULL);
-	glColor4f(1.0f, 1.0f, 1.0f, 0.5f);
-	glBegin(GL_QUADS);
+	glDisable(GL_TEXTURE_2D);
+	glColor4f(0.0f, 0.0f, 0.0f, 1.0f);
+	glBegin(GL_LINE_LOOP);
 	{
-		glVertex2i(mouseInfo.x, mouseInfo.y);
-		glVertex2i(mouseInfo.x + 16, mouseInfo.y);
-		glVertex2i(mouseInfo.x + 16, mouseInfo.y + 16);
-		glVertex2i(mouseInfo.x, mouseInfo.y + 16);
+		glVertex2i(mouseInfo.x + 2, mouseInfo.y + 1);
+		glVertex2i(mouseInfo.x + 14, mouseInfo.y + 1);
+		glVertex2i(mouseInfo.x + 14, mouseInfo.y + 14);
+		glVertex2i(mouseInfo.x + 1, mouseInfo.y + 14);
 	}
-	glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
 	glEnd();
+	glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+	glBegin(GL_LINE_LOOP);
+	{
+		glVertex2i(mouseInfo.x + 3, mouseInfo.y + 2);
+		glVertex2i(mouseInfo.x + 13, mouseInfo.y + 2);
+		glVertex2i(mouseInfo.x + 13, mouseInfo.y + 13);
+		glVertex2i(mouseInfo.x + 2, mouseInfo.y + 13);
+	}
+	glEnd();
+	glColor4f(0.0f, 0.0f, 0.0f, 1.0f);
+	glBegin(GL_LINE_LOOP);
+	{
+		glVertex2i(mouseInfo.x + 4, mouseInfo.y + 3);
+		glVertex2i(mouseInfo.x + 12, mouseInfo.y + 3);
+		glVertex2i(mouseInfo.x + 12, mouseInfo.y + 12);
+		glVertex2i(mouseInfo.x + 3, mouseInfo.y + 12);
+	}
+	glEnd();
+	glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+	glEnable(GL_TEXTURE_2D);
 }
 
 void MapWidget::mousePressEvent(QMouseEvent *e)
@@ -96,4 +116,9 @@ void MapWidget::mouseReleaseEvent(QMouseEvent *e)
 Map *MapWidget::getMap()
 {
 	return map;
+}
+
+void MapWidget::clickedSomething()
+{
+
 }

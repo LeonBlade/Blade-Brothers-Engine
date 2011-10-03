@@ -16,18 +16,22 @@ SOURCES += main.cpp\
     glwidget.cpp \
     tilesetwindow.cpp \
     mapwidget.cpp \
-    propertieswindow.cpp
+    propertieswindow.cpp \
+    tileselection.cpp
 
 HEADERS  += mainwindow.h \
     glwidget.h \
     tilesetwindow.h \
     mapwidget.h \
-    propertieswindow.h
+    propertieswindow.h \
+    tileselection.h
 
 LIBS += -L../Engine/Debug -lMap.o -lSprite.o -lGraphics.o -lLog.o -lpng
 
 FORMS    += mainwindow.ui \
     propertieswindow.ui
+
+
 
 
 
