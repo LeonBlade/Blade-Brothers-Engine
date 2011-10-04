@@ -2,6 +2,7 @@
 
 #include "mapwidget.h"
 #include "mainwindow.h"
+#include "tileselection.h"
 
 MapWidget::MapWidget(QWidget *parent, QGLWidget *shareWidget) :
 	GLWidget(parent, shareWidget)
@@ -48,41 +49,14 @@ void MapWidget::paintGL()
 {
 	GLWidget::paintGL();
 
+	glEnable(GL_TEXTURE_2D);
+
 	map->onDraw(LayerGround);
 	map->onDraw(LayerMiddle);
 	map->onDraw(LayerAbove);
 
-	// draw the cursor!
-	glDisable(GL_TEXTURE_2D);
-	glColor4f(0.0f, 0.0f, 0.0f, 1.0f);
-	glBegin(GL_LINE_LOOP);
-	{
-		glVertex2i(mouseInfo.x + 2, mouseInfo.y + 1);
-		glVertex2i(mouseInfo.x + 14, mouseInfo.y + 1);
-		glVertex2i(mouseInfo.x + 14, mouseInfo.y + 14);
-		glVertex2i(mouseInfo.x + 1, mouseInfo.y + 14);
-	}
-	glEnd();
-	glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-	glBegin(GL_LINE_LOOP);
-	{
-		glVertex2i(mouseInfo.x + 3, mouseInfo.y + 2);
-		glVertex2i(mouseInfo.x + 13, mouseInfo.y + 2);
-		glVertex2i(mouseInfo.x + 13, mouseInfo.y + 13);
-		glVertex2i(mouseInfo.x + 2, mouseInfo.y + 13);
-	}
-	glEnd();
-	glColor4f(0.0f, 0.0f, 0.0f, 1.0f);
-	glBegin(GL_LINE_LOOP);
-	{
-		glVertex2i(mouseInfo.x + 4, mouseInfo.y + 3);
-		glVertex2i(mouseInfo.x + 12, mouseInfo.y + 3);
-		glVertex2i(mouseInfo.x + 12, mouseInfo.y + 12);
-		glVertex2i(mouseInfo.x + 3, mouseInfo.y + 12);
-	}
-	glEnd();
-	glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-	glEnable(GL_TEXTURE_2D);
+	// draw selection
+	TileSelection::drawSelection(mouseInfo.x, mouseInfo.y);
 }
 
 void MapWidget::mousePressEvent(QMouseEvent *e)

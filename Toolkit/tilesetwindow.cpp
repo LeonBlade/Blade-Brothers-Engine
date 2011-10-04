@@ -1,6 +1,7 @@
 #include <QMouseEvent>
 
 #include "tilesetwindow.h"
+#include "tileselection.h"
 
 TilesetWindow::TilesetWindow(QWidget *parent, QGLWidget *shareWidget) :
     GLWidget(parent, shareWidget)
@@ -16,6 +17,8 @@ TilesetWindow::TilesetWindow(QWidget *parent, QGLWidget *shareWidget) :
 	mouseInfo.middle_down = false;
 
 	selection = (Rectangle){ 0, 0, 16, 16 };
+	// update global selection
+	TileSelection::setSelection(selection);
 }
 
 void TilesetWindow::initializeGL()
@@ -41,37 +44,8 @@ void TilesetWindow::paintGL()
 	// draw the tileset
 	Graphics::drawSprite(tileset, (Rectangle){0, 0, tileset->getWidth(), tileset->getHeight()}, (Rectangle){0, 0, tileset->getWidth(), tileset->getHeight()});
 
-	// draw the cursor!
-	glDisable(GL_TEXTURE_2D);
-	glColor4f(0.0f, 0.0f, 0.0f, 1.0f);
-	glBegin(GL_LINE_LOOP);
-	{
-		glVertex2i(selection.x + 1, selection.y);
-		glVertex2i(selection.w, selection.y);
-		glVertex2i(selection.w, selection.h - 1);
-		glVertex2i(selection.x, selection.h - 1);
-	}
-	glEnd();
-	glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-	glBegin(GL_LINE_LOOP);
-	{
-		glVertex2i(selection.x + 2, selection.y + 1);
-		glVertex2i(selection.w - 1, selection.y + 1);
-		glVertex2i(selection.w - 1, selection.h - 2);
-		glVertex2i(selection.x + 1, selection.h - 2);
-	}
-	glEnd();
-	glColor4f(0.0f, 0.0f, 0.0f, 1.0f);
-	glBegin(GL_LINE_LOOP);
-	{
-		glVertex2i(selection.x + 3, selection.y + 2);
-		glVertex2i(selection.w - 2, selection.y + 2);
-		glVertex2i(selection.w - 2, selection.h - 3);
-		glVertex2i(selection.x + 2, selection.h - 3);
-	}
-	glEnd();
-	glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-	glEnable(GL_TEXTURE_2D);
+	// draw the selection
+	TileSelection::drawSelection(selection.x, selection.y);
 }
 
 void TilesetWindow::mousePressEvent(QMouseEvent *e)
@@ -83,10 +57,14 @@ void TilesetWindow::mousePressEvent(QMouseEvent *e)
 	else if (e->button() == Qt::MiddleButton)
 		mouseInfo.middle_down = true;
 
+	// update local selection lock in grid
 	selection.x = e->pos().x() - ( e->pos().x() % 16 );
 	selection.y = e->pos().y() - ( e->pos().y() % 16 );
 	selection.w = e->pos().x() - ( e->pos().x() % 16 ) + 16;
 	selection.h = e->pos().y() - ( e->pos().y() % 16 ) + 16;
+
+	// update global selection
+	TileSelection::setSelection(selection);
 
 	updateGL();
 }
@@ -105,6 +83,9 @@ void TilesetWindow::mouseMoveEvent(QMouseEvent *e)
 		if (selection.h >= selection.y)
 			selection.h += 16;
 	}
+
+	// update global selection
+	TileSelection::setSelection(selection);
 
 	updateGL();
 }
