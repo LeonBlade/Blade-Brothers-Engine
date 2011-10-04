@@ -22,6 +22,7 @@ public:
 	virtual ~Sprite();
 
 	void bindTexture();
+	static Sprite *getLBS();
 
 	GLuint getTexture();
 	int getWidth();
@@ -31,6 +32,7 @@ private:
 	GLuint texture;
 	int width;
 	int height;
+	static Sprite *lastBind;
 };
 
 #endif /* SPRITE_H_ */

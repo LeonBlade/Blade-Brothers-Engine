@@ -4,6 +4,7 @@
 #include "glwidget.h"
 #include "propertieswindow.h"
 
+#include "Graphics.h"
 #include "Map.h"
 
 class MapWidget : public GLWidget
@@ -28,19 +29,22 @@ public:
     void resizeGL(int w, int h);
     void paintGL();
 
+	void drawTiles();
+
     void mousePressEvent(QMouseEvent *e);
 	void mouseMoveEvent(QMouseEvent *e);
     void mouseReleaseEvent(QMouseEvent *e);
 
 	Map *getMap();
 
-public slots:
-	void clickedSomething();
+signals:
+	void changedSelection(Rectangle newRectangle);
 
 private:
 	PropertiesWindow *propertiesWindow;
 	Map *map;
 	MouseInfo mouseInfo;
+	Rectangle selection;
 };
 
 #endif // MAPWINDOW_H

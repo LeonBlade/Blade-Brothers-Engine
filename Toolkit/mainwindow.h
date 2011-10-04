@@ -22,6 +22,7 @@ public slots:
     void addTab_Slot();
     void removeTab_Slot(int id);
 	void mapUpdate_Slot(int id);
+	void mapChangeSelection_Slot(Rectangle newRectangle);
 
 public:
     void addTab();

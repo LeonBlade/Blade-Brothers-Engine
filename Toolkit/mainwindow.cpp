@@ -44,7 +44,11 @@ void MainWindow::mapUpdate_Slot(int id)
 {
 	MapWidget *mapWidget = (MapWidget*)ui->tabWidget->widget(id);
 	mapWidget->onActive();
-	//
+}
+
+void MainWindow::mapChangeSelection_Slot(Rectangle newRectangle)
+{
+	tilesetWindow->setSelection(newRectangle);
 }
 
 /**
@@ -52,7 +56,9 @@ void MainWindow::mapUpdate_Slot(int id)
 **/
 void MainWindow::addTab()
 {
-	ui->tabWidget->addTab(new MapWidget(0, masterWidget), QString("New tab"));
+	MapWidget *mapWidget = new MapWidget(0, masterWidget);
+	connect(mapWidget, SIGNAL(changedSelection(Rectangle)), this, SLOT(mapChangeSelection_Slot(Rectangle)));
+	ui->tabWidget->addTab(mapWidget, QString("New tab"));
 	tilesetWindow->updateGL();
 }
 

@@ -26,6 +26,8 @@ public:
     void resizeGL(int w, int h);
     void paintGL();
 
+	void setSelection(Rectangle newSelection);
+
     void mousePressEvent(QMouseEvent *e);
 	void mouseMoveEvent(QMouseEvent *e);
     void mouseReleaseEvent(QMouseEvent *e);

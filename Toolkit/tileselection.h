@@ -15,7 +15,7 @@ public:
 	static void setTile(int x, int y, int value);
 	static void setSelection(Rectangle newSelection);
 	static void setSelection(int x, int y, int w, int h);
-	static void drawSelection(int x, int y);
+	static void drawSelection(int x, int y, bool drawTiles = false);
 
 private:
 	static TileSelection *instance;

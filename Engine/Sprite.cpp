@@ -8,6 +8,8 @@
 #include "Sprite.h"
 #include "Log.h"
 
+Sprite *Sprite::lastBind = new Sprite();
+
 Sprite::Sprite()
 {
 	// initialize a few things
@@ -175,6 +177,12 @@ Sprite::~Sprite()
 void Sprite::bindTexture()
 {
 	glBindTexture(GL_TEXTURE_2D, texture);
+	Sprite::lastBind = this;
+}
+
+Sprite *Sprite::getLBS()
+{
+	return Sprite::lastBind;
 }
 
 GLuint Sprite::getTexture()
