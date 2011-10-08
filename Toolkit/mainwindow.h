@@ -25,10 +25,13 @@ public slots:
 	void mapChangeSelection_Slot(Rectangle newRectangle);
 	void openMap_Slot();
 	void saveMap_Slot();
+	void showProperties_Slot();
+	void propertiesAccepted_Slot();
 
 public:
-    void addTab();
-    void removeTab(int id);
+	void addTab();
+	void addTab(MapWidget *mapWidget);
+	void removeTab(int id);
 
 private:
     Ui::MainWindow *ui;

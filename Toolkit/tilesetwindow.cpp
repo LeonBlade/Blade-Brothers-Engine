@@ -32,7 +32,7 @@ void TilesetWindow::initializeGL()
 
 void TilesetWindow::resizeGL(int w, int h)
 {
-	GLWidget::resizeGL(256, 256);
+	GLWidget::resizeGL(tileset->getWidth(), tileset->getHeight());
 }
 
 void TilesetWindow::setSelection(Rectangle newSelection)

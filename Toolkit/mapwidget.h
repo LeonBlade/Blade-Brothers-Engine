@@ -37,8 +37,17 @@ public:
 
 	Map *getMap();
 
+	void loadMap(QString file);
+	void saveMap(QString file);
+
+	void showProperties();
+
 signals:
 	void changedSelection(Rectangle newRectangle);
+	void propertiesAccepted();
+
+private slots:
+	void accepted_Slot();
 
 private:
 	PropertiesWindow *propertiesWindow;

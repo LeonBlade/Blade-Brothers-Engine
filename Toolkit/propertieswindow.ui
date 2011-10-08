@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Properties</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <property name="leftMargin">
@@ -39,7 +39,11 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit"/>
+      <widget class="QLineEdit" name="name">
+       <property name="text">
+        <string>New map</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>
@@ -62,7 +66,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="comboBox"/>
+      <widget class="QComboBox" name="tileset"/>
      </item>
     </layout>
    </item>
@@ -76,7 +80,14 @@
       </widget>
      </item>
      <item>
-      <widget class="QSpinBox" name="spinBox"/>
+      <widget class="QSpinBox" name="width">
+       <property name="suffix">
+        <string/>
+       </property>
+       <property name="minimum">
+        <number>20</number>
+       </property>
+      </widget>
      </item>
      <item>
       <widget class="QLabel" name="label_3">
@@ -86,7 +97,11 @@
       </widget>
      </item>
      <item>
-      <widget class="QSpinBox" name="spinBox_2"/>
+      <widget class="QSpinBox" name="height">
+       <property name="minimum">
+        <number>15</number>
+       </property>
+      </widget>
      </item>
      <item>
       <spacer name="horizontalSpacer">

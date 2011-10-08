@@ -15,6 +15,11 @@ public:
     explicit PropertiesWindow(QWidget *parent = 0);
     ~PropertiesWindow();
 
+	QString getName();
+	QString getTileset();
+	int getWidth();
+	int getHeight();
+
 private:
     Ui::PropertiesWindow *ui;
 };

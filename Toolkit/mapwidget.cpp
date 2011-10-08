@@ -9,6 +9,7 @@ MapWidget::MapWidget(QWidget *parent, QGLWidget *shareWidget) :
 {	
 	// enable mouse tracking
 	setMouseTracking(true);
+
 	// initialize new map
 	map = new Map();
 
@@ -21,14 +22,42 @@ MapWidget::MapWidget(QWidget *parent, QGLWidget *shareWidget) :
 
 	// create new properties window
 	propertiesWindow = new PropertiesWindow(0);
-	// TODO: display it and handle properties stuff
+
+	// create signal/slot connection for acception
+	connect(propertiesWindow, SIGNAL(accepted()), this, SLOT(accepted_Slot()));
+}
+
+void MapWidget::showProperties()
+{
+	propertiesWindow->show();
+}
+
+void MapWidget::accepted_Slot()
+{
+	map->setName(propertiesWindow->getName().toStdString());
+	map->setTileset(propertiesWindow->getTileset().toStdString());
+	map->onResize(propertiesWindow->getWidth(), propertiesWindow->getHeight());
+
+	emit propertiesAccepted();
+
+	updateGL();
+}
+
+void MapWidget::loadMap(QString file)
+{
+	map->onLoad(file.toStdString());
+}
+
+void MapWidget::saveMap(QString file)
+{
+	map->onSave(file.toStdString());
 }
 
 void MapWidget::initializeGL()
 {
 	GLWidget::initializeGL();
 
-	map->onCreate("New map", "../Resources/tiles.png", 20, 15);
+	map->onCreate(std::string("New map"), std::string("../Resources/tiles.png"), 20, 15);
 }
 
 void MapWidget::onActive()
@@ -48,6 +77,9 @@ void MapWidget::resizeGL(int w, int h)
 void MapWidget::paintGL()
 {
 	GLWidget::paintGL();
+
+	// refresh size
+	onActive();
 
 	glEnable(GL_TEXTURE_2D);
 

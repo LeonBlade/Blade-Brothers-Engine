@@ -74,6 +74,7 @@
     <property name="title">
      <string>Edit</string>
     </property>
+    <addaction name="actionProperties"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
@@ -88,6 +89,9 @@
    <addaction name="actionNew_Map"/>
    <addaction name="actionOpen_Map"/>
    <addaction name="actionSave_Map"/>
+   <addaction name="separator"/>
+   <addaction name="actionProperties"/>
+   <addaction name="separator"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <widget class="QDockWidget" name="dockWidget">
@@ -199,6 +203,18 @@
   <action name="actionClose_Map">
    <property name="text">
     <string>Close Map</string>
+   </property>
+  </action>
+  <action name="actionProperties">
+   <property name="icon">
+    <iconset resource="../Resources/resources.qrc">
+     <normaloff>:/icons/toolkit/stock_preferences.png</normaloff>:/icons/toolkit/stock_preferences.png</iconset>
+   </property>
+   <property name="text">
+    <string>Properties</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+M</string>
    </property>
   </action>
  </widget>

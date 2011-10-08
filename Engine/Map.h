@@ -63,8 +63,14 @@ public:
 	MapTile getTile(int x, int y);
 	int getTile(int x, int y, MapLayer layer);
 
+	std::string getName();
+	std::string getTileset();
+	Sprite *getTilesetSprite();
 	int getWidth();
 	int getHeight();
+
+	void setName(std::string name);
+	void setTileset(std::string tileset);
 
 private:
 	MapHeader header;

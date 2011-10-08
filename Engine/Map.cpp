@@ -103,19 +103,25 @@ void Map::onSave(std::string file)
 
 void Map::onResize(int width, int height)
 {
-	Log::info("Resizing map w:%i h:%i...", width, height);
-	Map *map = new Map();
-	map->onCreate("NAME", "../Resources/tiles.png", width, height);
-	for (int y = 0; y < map->getHeight(); y++)
+	Log::info("Resizing map to %ix%i...", width, height);
+	MapTile *mapTiles = (MapTile*) malloc(width * height * sizeof(MapTile));
+	int i = 0;
+	for (int i = 0; i < width * height; i++) mapTiles[i] = ((MapTile){{1,0,0},false});
+	int _width = (width < this->getWidth()) ? width : this->getWidth();
+	int _height = (width < this->getHeight()) ? height : this->getHeight();
+	for (int y = 0; y < _height; y++)
 	{
-		for (int x = 0; x < map->getWidth(); x++)
-			map->setTile(x, y, this->getTile(x, y));
+		for (int x = 0; x < _width; x++)
+		{
+			i = x + (width * y);
+			mapTiles[i] = this->getTile(x, y);
+		}
 	}
-
-	this->onCreate("MAP NAME", "../Resources/tiles.png", width, height);
-	memcpy(this->tiles, map->tiles, sizeof(map->tiles));
-	// TODO: objects later when they're added
-	// memcpy(map->objects, this->objects, sizeof(this->objects));
+	this->header.width = width;
+	this->header.height = height;
+	this->tiles = (MapTile*) malloc(width * height * sizeof(MapTile));
+	memcpy(this->tiles, mapTiles, width * height * sizeof(MapTile));
+	delete mapTiles;
 }
 
 void Map::onUpdate()
@@ -149,6 +155,35 @@ int Map::getWidth()
 int Map::getHeight()
 {
 	return header.height;
+}
+
+std::string Map::getName()
+{
+	return std::string(header.name);
+}
+
+std::string Map::getTileset()
+{
+	return std::string(header.tileset);
+}
+
+Sprite *Map::getTilesetSprite()
+{
+	return sprite;
+}
+
+void Map::setName(std::string name)
+{
+	header.name = (char*) malloc(name.length());
+	strcpy(header.name, name.c_str());
+}
+
+void Map::setTileset(std::string tileset)
+{
+	header.tileset = (char*) malloc(tileset.length());
+	strcpy(header.tileset, tileset.c_str());
+
+	sprite = Graphics::addTexture(tileset);
 }
 
 void Map::onDraw(MapLayer layer)
