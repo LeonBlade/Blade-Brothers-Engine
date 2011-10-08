@@ -31,6 +31,10 @@ LIBS += -L../Engine/Debug -lMap.o -lSprite.o -lGraphics.o -lLog.o -lpng
 FORMS    += mainwindow.ui \
     propertieswindow.ui
 
+RESOURCES += \
+    ../Resources/resources.qrc
+
+
 
 
 

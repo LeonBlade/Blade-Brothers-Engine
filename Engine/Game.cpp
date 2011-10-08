@@ -29,7 +29,8 @@ Game::~Game()
 void Game::onInit()
 {
 	guy->onLoad("../Resources/character.png");
-	map->onCreate("New Map", "../Resources/tiles.png", 20, 15);
+	//map->onCreate("New Map", "../Resources/tiles.png", 10, 10);
+	map->onLoad("../Resources/testing.map");
 }
 
 void Game::onUpdate()
@@ -80,6 +81,11 @@ void Game::onKeyDown()
 
 		glutDestroyWindow(glWindow);
 		exit(0);
+	}
+
+	if (Keyboard::isDown('r'))
+	{
+		//map->onResize(15, 12);
 	}
 }
 

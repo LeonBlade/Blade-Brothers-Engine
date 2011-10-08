@@ -85,6 +85,9 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionNew_Map"/>
+   <addaction name="actionOpen_Map"/>
+   <addaction name="actionSave_Map"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <widget class="QDockWidget" name="dockWidget">
@@ -146,6 +149,10 @@
    </widget>
   </widget>
   <action name="actionNew_Map">
+   <property name="icon">
+    <iconset resource="../Resources/resources.qrc">
+     <normaloff>:/icons/toolkit/filenew.png</normaloff>:/icons/toolkit/filenew.png</iconset>
+   </property>
    <property name="text">
     <string>New Map</string>
    </property>
@@ -154,18 +161,39 @@
    </property>
   </action>
   <action name="actionOpen_Map">
+   <property name="icon">
+    <iconset resource="../Resources/resources.qrc">
+     <normaloff>:/icons/toolkit/fileopen.png</normaloff>:/icons/toolkit/fileopen.png</iconset>
+   </property>
    <property name="text">
     <string>Open Map</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
   </action>
   <action name="actionSave_Map">
+   <property name="icon">
+    <iconset resource="../Resources/resources.qrc">
+     <normaloff>:/icons/toolkit/filesave.png</normaloff>:/icons/toolkit/filesave.png</iconset>
+   </property>
    <property name="text">
     <string>Save Map</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
   </action>
   <action name="actionSave_Map_As">
+   <property name="icon">
+    <iconset resource="../Resources/resources.qrc">
+     <normaloff>:/icons/toolkit/filesaveas.png</normaloff>:/icons/toolkit/filesaveas.png</iconset>
+   </property>
    <property name="text">
     <string>Save Map As...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+S</string>
    </property>
   </action>
   <action name="actionClose_Map">
@@ -175,6 +203,8 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="../Resources/resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

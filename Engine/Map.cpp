@@ -71,14 +71,21 @@ void Map::onLoad(std::string file)
 	{
 		header.name[i] = cc; i++;
 	}
+	header.name[i] = '\0';
 	i = 0;
 	while ((cc = (char)fgetc(f)) != 0x00)
 	{
 		header.tileset[i] = cc; i++;
 	}
+	header.tileset[i] = '\0';
 	fread(&header.width, 1, 2, f);
 	fread(&header.height, 1, 2, f);
-	fread(tiles, 1, header.width*header.height*sizeof(MapTile), f);
+	int tbs = header.width * header.height * sizeof(MapTile);
+	tiles = (MapTile*) malloc(tbs);
+	fread(tiles, 1, tbs, f);
+
+	sprite = Graphics::addTexture(header.tileset);
+	Map::maps.insert(std::pair<std::string, Map*>(header.name, this));
 }
 
 void Map::onSave(std::string file)
@@ -92,6 +99,23 @@ void Map::onSave(std::string file)
 	fwrite(&header.height, 2, 1, f);
 	fwrite(tiles, header.width*header.height*sizeof(MapTile), 1, f);
 	fclose(f);
+}
+
+void Map::onResize(int width, int height)
+{
+	Log::info("Resizing map w:%i h:%i...", width, height);
+	Map *map = new Map();
+	map->onCreate("NAME", "../Resources/tiles.png", width, height);
+	for (int y = 0; y < map->getHeight(); y++)
+	{
+		for (int x = 0; x < map->getWidth(); x++)
+			map->setTile(x, y, this->getTile(x, y));
+	}
+
+	this->onCreate("MAP NAME", "../Resources/tiles.png", width, height);
+	memcpy(this->tiles, map->tiles, sizeof(map->tiles));
+	// TODO: objects later when they're added
+	// memcpy(map->objects, this->objects, sizeof(this->objects));
 }
 
 void Map::onUpdate()

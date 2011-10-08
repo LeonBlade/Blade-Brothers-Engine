@@ -30,7 +30,7 @@
 									<listOptionValue builtIn="false" value="glut"/>
 									<listOptionValue builtIn="false" value="png"/>
 								</option>
-								<option id="macosx.cpp.link.option.paths.924748179" name="Library search path (-L)" superClass="macosx.cpp.link.option.paths" valueType="libPaths"/>
+								<option id="macosx.cpp.link.option.paths.924748179" name="Library search path (-L)" superClass="macosx.cpp.link.option.paths"/>
 								<option id="macosx.cpp.link.option.userobjs.775236838" name="Other objects" superClass="macosx.cpp.link.option.userobjs"/>
 								<option id="macosx.cpp.link.option.other.1236217779" name="Other options (-Xlinker [option])" superClass="macosx.cpp.link.option.other"/>
 								<inputType id="cdt.managedbuild.tool.macosx.cpp.linker.input.1162104054" superClass="cdt.managedbuild.tool.macosx.cpp.linker.input">
@@ -46,9 +46,7 @@
 								<option id="gnu.cpp.compilermacosx.exe.debug.option.optimization.level.423957979" name="Optimization Level" superClass="gnu.cpp.compilermacosx.exe.debug.option.optimization.level" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
 								<option id="gnu.cpp.compiler.macosx.exe.debug.option.debugging.level.1754734499" name="Debug Level" superClass="gnu.cpp.compiler.macosx.exe.debug.option.debugging.level" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
 								<option id="gnu.cpp.compiler.option.other.other.307545298" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" value="-c -fmessage-length=0" valueType="string"/>
-								<option id="gnu.cpp.compiler.option.include.paths.2061817821" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="/opt/local/include"/>
-								</option>
+								<option id="gnu.cpp.compiler.option.include.paths.2061817821" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath"/>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.752633299" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.c.compiler.macosx.exe.debug.2073546321" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.macosx.exe.debug">

@@ -54,6 +54,7 @@ public:
 	void onCreate(std::string name, std::string tileset, int width, int height);
 	void onLoad(std::string file);
 	void onSave(std::string file);
+	void onResize(int width, int height);
 	void onUpdate();
 	void onDraw(MapLayer layer);
 
