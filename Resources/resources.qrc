@@ -6,5 +6,8 @@
         <file>toolkit/filesaveas.png</file>
         <file>toolkit/stock_preferences.png</file>
         <file>toolkit/stock_run.png</file>
+        <file>toolkit/bottom_layer_button.png</file>
+        <file>toolkit/middle_layer_button.png</file>
+        <file>toolkit/top_layer_button.png</file>
     </qresource>
 </RCC>

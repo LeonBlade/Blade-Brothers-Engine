@@ -29,8 +29,7 @@ public slots:
 	void propertiesAccepted_Slot();
 
 public:
-	void addTab();
-	void addTab(MapWidget *mapWidget);
+	MapWidget *addTab(bool showProperties = true);
 	void removeTab(int id);
 
 private:
